@@ -4,7 +4,7 @@
   tasks:
         - name: Deleating S3 bucket
           aws_s3: 
-                aws_access_key: AKIAIY7WKVZ4TSMX37AA 
-                aws_secret_key: 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
-                bucket: ansible1990
+                aws_access_key: 
+                aws_secret_key: 
+                bucket: 
                 mode: delete                
