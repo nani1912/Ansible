@@ -4,10 +4,10 @@
   tasks: 
    - name: EC2 spin-up
      ec2:
-        aws_secret_key: 2Q5VoZaF0hIHcCIErdjl1GGPjY+fF57fUqdXiOPW
-        aws_access_key: AKIAIY7WKVZ4TSMX37AA       
+        aws_secret_key: 
+        aws_access_key:      
         key_name: Ansible
-        image: ami-04681a1dbd79675a5
+        image: 
         region: us-east-1
         instance_type: t2.micro
         wait: yes
