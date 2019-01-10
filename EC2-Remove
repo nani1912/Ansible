@@ -1,0 +1,15 @@
+## The below playbook will let you know the how to terminate the EC2 instance from cloud!
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+   - name: Removeing EC2 instance 
+     ec2:
+        aws_secret_key: 
+        aws_access_key:        
+        instance_ids: 
+        region: 
+        state: "absent"
+        wait: true
+     delegate_to: localhost
