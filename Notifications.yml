@@ -1,8 +1,12 @@
 
-Author Ranga ansible file for sending notifications regarding OS patching 
-Two concepts with reboot and with noreboot after OS patching
+Ansible YLM file for sending notification Emails regarding OS patching 
+
+Below file have two concepts with reboot and with noreboot after OS patching.
+
+Under roles need to execute scripts build by any launage [Python is prefered]
 
 Note: Please change hosts, groups, Email ID's and scripts as per the requirments.
+
 
 ---
 #------------------------------------------------------------------------------
@@ -19,7 +23,7 @@ Note: Please change hosts, groups, Email ID's and scripts as per the requirments
   pre_tasks:
     - mail:
         subject: 'OS patching for {{ ansible_hostname }} is beginning now.'   [Any subject name]
-        from: 'svc_cls@{{ ansible_fqdn }}'                                    [From Address]
+        from: 'Ranga@{{ ansible_fqdn }}'                                    [From Address]
         body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'    [Body of the message]
         to: '{{ app_email }}'                                                 [To Address]
         charset: utf8                                                         [Formate]
@@ -38,7 +42,7 @@ Note: Please change hosts, groups, Email ID's and scripts as per the requirments
   post_tasks:
     - mail:
         subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: 'svc_cls@{{ ansible_fqdn }}'
+        from: 'Ranga@{{ ansible_fqdn }}'
         body: "Automated OS patching for {{ ansible_hostname }} has completed."
         to: '{{ app_email  }}'
         charset: utf8
@@ -46,17 +50,17 @@ Note: Please change hosts, groups, Email ID's and scripts as per the requirments
       tags: mail 
 - name: Performing yum update on host(s)
   hosts: group2
-  become: yes
-  any_errors_fatal: false
+  become: yes                             [Previlage Escalation]
+  any_errors_fatal: false                 [execlude if any errors found on executing playbook it wont abort the playbook] 
   ##########################################################
   # Send notification email at start of change to app teams
   ##########################################################
   pre_tasks:
     - mail:
         subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: 'svc_cls@{{ ansible_fqdn }}'
+        from: 'Ranga@{{ ansible_fqdn }}'         [Ex: ranga@ansible.com]
         body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
-        to: '{{ app_email }}'
+        to: '{{ app_email }}'  
         charset: utf8
       delegate_to: localhost
       tags: mail
@@ -73,7 +77,7 @@ Note: Please change hosts, groups, Email ID's and scripts as per the requirments
   post_tasks:
     - mail:
         subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: 'svc_cls@{{ ansible_fqdn }}'
+        from: 'Ranga@{{ ansible_fqdn }}'
         body: "Automated OS patching for {{ ansible_hostname }} has completed."
         to: '{{ app_email  }}'
         charset: utf8
@@ -89,7 +93,7 @@ Note: Please change hosts, groups, Email ID's and scripts as per the requirments
   pre_tasks:
     - mail:
         subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: 'svc_cls@{{ ansible_fqdn }}'
+        from: 'Ranga@{{ ansible_fqdn }}'
         body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
         to: '{{ app_email }}'
         charset: utf8
@@ -108,7 +112,7 @@ Note: Please change hosts, groups, Email ID's and scripts as per the requirments
   post_tasks:
     - mail:
         subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: 'svc_cls@{{ ansible_fqdn }}'
+        from: 'Ranga@{{ ansible_fqdn }}'
         body: "Automated OS patching for {{ ansible_hostname }} has completed."
         to: '{{ app_email  }}'
         charset: utf8
@@ -124,7 +128,7 @@ Note: Please change hosts, groups, Email ID's and scripts as per the requirments
   pre_tasks:
     - mail:
         subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: 'svc_cls@{{ ansible_fqdn }}'
+        from: 'Ranga@{{ ansible_fqdn }}'
         body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
         to: '{{ app_email }}'
         charset: utf8
@@ -143,7 +147,7 @@ Note: Please change hosts, groups, Email ID's and scripts as per the requirments
   post_tasks:
     - mail:
         subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: 'svc_cls@{{ ansible_fqdn }}'
+        from: 'Ranga@{{ ansible_fqdn }}'
         body: "Automated OS patching for {{ ansible_hostname }} has completed."
         to: '{{ app_email  }}'
         charset: utf8
