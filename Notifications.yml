@@ -1,3 +1,9 @@
+
+Author Ranga ansible file for sending notifications regarding OS patching 
+Two concepts with reboot and with noreboot after OS patching
+
+Note: Please change hosts, groups, Email ID's and scripts as per the requirments.
+
 ---
 #------------------------------------------------------------------------------
 # Description: Playbook to perform 'yum update' on selected hosts.
