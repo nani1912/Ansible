@@ -1,0 +1,46 @@
+Ansible-Vault Using:
+
+Creating New Encrypted Files
+ansible-vault create vault.yml [here creating vault file for vault.yml playbook]
+You will be prompted to enter and confirm a password:
+Output
+New Vault password: 
+Confirm New Vault password:
+
+Once done verify once vault file information has been encrypted or not?
+Edit yml file with some information and execute cat vault.yml you will see the encrypted information.
+
+Encrypting Existing Files
+If you already have a file that you wish to encrypt with Vault, use the ansible-vault encrypt command instead.
+For testing, we can create an example file by typing:
+•	echo 'unencrypted stuff' > encrypt_me.txt
+Now, you can encrypt the existing file by typing:
+•	ansible-vault encrypt encrypt_me.txt
+
+Viewing Encrypted Files
+
+ansible-vault view vault.yml
+
+
+Editing Encrypted Files
+
+ansible-vault edit vault.yml
+
+Manually Decrypting Encrypted Files
+
+ansible-vault decrypt vault.yml
+
+Changing the Password of Encrypted Files
+
+ansible-vault rekey encrypt_me.txt
+
+Encrypting specific variables
+Best practice while using Ansible Vault is to encrypt only the sensitive data.
+Ansible Vault allows you to encrypt only specific variables. You can use the ansible-vault encrypt_string command for this.
+$ ansible-vault encrypt_string
+
+You can also achieve the same thing in a single line. 
+$ ansible-vault encrypt_string 'string' --name 'variable_name'
+Ex: ansible-vault encrypt_string ‘all my passwords’ –name ‘password’
+
+
