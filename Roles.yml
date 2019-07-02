@@ -1,0 +1,14 @@
+Role  yum_update
+
+
+updating alter OS patching of all RPM packages
+
+---
+- hosts: All
+  become: yes
+  tasks:
+    - name: '*'
+      yum:
+        state: latest
+     
+
